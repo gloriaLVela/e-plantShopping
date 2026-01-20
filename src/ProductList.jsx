@@ -260,6 +260,7 @@ function ProductList({ onHomeClick }) {
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
+        console.log("Adding to cart:", product);
         dispatch(addItem(product)); // Dispatch Redux action to add item
         setAddedToCart(prevState => ({
           ...prevState,
