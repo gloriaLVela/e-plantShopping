@@ -4,6 +4,9 @@ import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 
 const CartItem = ({ onContinueShopping }) => {
+    // useSelector reads data from the Redux store
+    // state.cart.items comes from your CartSlice reducer (CartSlice.jsx)
+    // cart is an array of cart item objects
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
@@ -28,7 +31,10 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleDecrement = (item) => {
-   dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+    if (item.quantity > 1){
+        dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+    }
+   
   };
 
   const handleRemove = (item) => {

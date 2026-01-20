@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const CartSlice = createSlice({
+    // This is the data source for CartItem.jsx state.cart.items
     name: 'cart',
     initialState: {
         items: [], // Initialize items as an empty array
@@ -19,6 +20,7 @@ export const CartSlice = createSlice({
             }
         },
         removeItem: (state, action) => {
+            // This reducer removes an item from the cart based on its name and gets called when the user wants to remove products from the cart.
             state.items = state.items.filter(item => item.name !== action.payload);
         },
         updateQuantity: (state, action) => {

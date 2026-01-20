@@ -260,9 +260,10 @@ function ProductList({ onHomeClick }) {
     const dispatch = useDispatch();
 
     const handleAddToCart = (product) => {
+        //console.log("Adding to cart:", product);
         // Dispatch Redux action to add item
         // The function addItem is in CartSlice.  
-        // It is goint to add the plant to the cart with quantity 1 (It is going to add 1 item to the addedToCart)
+        // It is going to add the plant to the cart with quantity 1 (It is going to add 1 item to the addedToCart)
         dispatch(addItem(product)); 
         setAddedToCart(prevState => ({
             ...prevState,
