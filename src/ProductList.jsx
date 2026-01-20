@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import './ProductList.css'
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
@@ -256,13 +257,16 @@ function ProductList({ onHomeClick }) {
         setShowCart(false);
     };
 
+    const dispatch = useDispatch();
+
     const handleAddToCart = (product) => {
-        dispatch(addItem(product)); // Dispatch the action to add the product to the cart (Redux action)
-        setAddedToCart((prevState) => ({ // Update the local state to reflect that the product has been added
-          ...prevState, // Spread the previous state to retain existing entries
-          [product.name]: true, // Set the current product's name as a key with value 'true' to mark it as added
+        dispatch(addItem(product)); // Dispatch Redux action to add item
+        setAddedToCart(prevState => ({
+          ...prevState,
+          [product.name]: true,
         }));
-      };    
+      };
+        
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -304,8 +308,9 @@ function ProductList({ onHomeClick }) {
                             <div className="product-description">{plant.description}</div> {/* Display plant description */}
                             <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
                             <button
-                                className="product-button"
-                                onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                            className="product-button"
+                            onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                            disabled={addedToCart[plant.name]} // Disable if already added
                             >
                                 Add to Cart
                             </button>
