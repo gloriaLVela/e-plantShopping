@@ -333,7 +333,8 @@ function ProductList({ onHomeClick }) {
 
                 </div>
             ) : (
-                <CartItem onContinueShopping={handleContinueShopping} />
+                <CartItem   setAddedToCart={setAddedToCart} 
+                            onContinueShopping={handleContinueShopping} />
             )}
         </div>
     );

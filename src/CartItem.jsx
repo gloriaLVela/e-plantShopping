@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 
-const CartItem = ({ onContinueShopping }) => {
+const CartItem = ({ setAddedToCart, onContinueShopping }) => {
     // useSelector reads data from the Redux store
     // state.cart.items comes from your CartSlice reducer (CartSlice.jsx)
     // cart is an array of cart item objects
