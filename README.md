@@ -1,4 +1,6 @@
 # coding-project-template
+e-plantShopping
+
 The course content focuses on the final project for developing a front-end shopping application using React.<BR>
 Landing Page Design<BR>
 <ul>
