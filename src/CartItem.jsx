@@ -43,7 +43,14 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleRemove = (item) => {
+    // Redux action to remove the item
     dispatch(removeItem(item.name));
+
+    //// Enable the button again
+    setAddedToCart(prevState => ({
+    ...prevState,
+    [item.name]: false, 
+  }));
   };
 
   // Calculate total cost based on quantity for an item
